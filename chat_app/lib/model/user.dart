@@ -11,12 +11,17 @@ class User {
 
   static List<User> generatedUser() {
     return [
-      User(0, 'Marzan', 'Islam', 'images/11.png', Color(0xFFEDEEF7)),
-      User(2, 'Marzan', 'Islam', 'images/22.png', Color(0xFF000036)),
-      User(3, 'Marzan', 'Islam', 'images/33.png', Color(0xFFB4B7BF)),
-      User(4, 'Marzan', 'Islam', 'images/44.png', Color(0xFF000036)),
-      User(5, 'Marzan', 'Islam', 'images/55.png', Color(0xFFB4B7BF)),
-      User(6, 'Marzan', 'Islam', 'images/66.png', Color(0xFF000036)),
+      User(0, 'Marzan', 'Islam', 'images/11.png',
+          Color.fromARGB(255, 188, 191, 214)),
+      User(
+          2, 'Alexa', '.', 'images/22.png', Color.fromARGB(255, 175, 160, 197)),
+      User(3, 'John', 'Dev', 'images/33.png',
+          Color.fromARGB(255, 198, 202, 155)),
+      User(4, 'Lira', '.', 'images/44.png', Color.fromARGB(255, 131, 131, 161)),
+      User(5, 'Faiza', 'Foxx', 'images/55.png',
+          Color.fromARGB(255, 199, 177, 129)),
+      User(6, 'Abraham', 'Linkon', 'images/66.png',
+          Color.fromARGB(255, 111, 111, 117)),
     ];
   }
 }
