@@ -49,20 +49,23 @@ class MessaheWidget extends StatelessWidget {
         SizedBox(
           width: 10,
         ),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              children: [
-                Text(
-                  '${messageList[index].user.firstName} ${messageList[index].user.lastName}',
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                )
-              ],
-            ),
-            Text(messageList[index].lastMessage)
-          ],
+        Flexible(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                children: [
+                  Text(
+                    '${messageList[index].user.firstName} ${messageList[index].user.lastName}',
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  )
+                ],
+              ),
+              Text(messageList[index].lastMessage)
+            ],
+          ),
         ),
+        Text(messageList[index].lastTime)
       ],
     );
   }
