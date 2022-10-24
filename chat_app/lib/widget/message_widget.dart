@@ -71,11 +71,13 @@ class MessaheWidget extends StatelessWidget {
                     )
                   ],
                 ),
-                Text(messageList[index].lastMessage)
+                Text(
+                  messageList[index].lastMessage,
+                )
               ],
             ),
           ),
-          Text(messageList[index].lastTime)
+          Text(messageList[index].lastTime),
         ],
       ),
     );

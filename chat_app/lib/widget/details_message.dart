@@ -12,46 +12,64 @@ class DetailsMessage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: Stack(children: [
-        Container(
-          margin: EdgeInsets.only(top: 10),
-          decoration: BoxDecoration(
-              color: Colors.grey,
-              borderRadius: BorderRadius.only(topRight: Radius.circular(40))),
-          child: ListView.separated(
-              itemBuilder: ((context, index) => list[index].user.id == myId
-                  ? _buildRecevedText(list[index])
-                  : _buildSenderText(list[index])),
-              separatorBuilder: (_, index) => SizedBox(
-                    width: 10,
-                  ),
-              itemCount: list.length),
+        Padding(
+          padding: const EdgeInsets.fromLTRB(10, 10, 10, 2),
+          child: Container(
+            margin: EdgeInsets.only(top: 10),
+            decoration: BoxDecoration(
+                color: Colors.grey,
+                borderRadius: BorderRadius.only(
+                  topRight: Radius.circular(90),
+                  bottomLeft: Radius.circular(30),
+                  bottomRight: Radius.circular(30),
+                )),
+            child: ListView.separated(
+                itemBuilder: ((context, index) => list[index].user.id == myId
+                    ? _buildRecevedText(list[index])
+                    : _buildSenderText(list[index])),
+                separatorBuilder: (_, index) => SizedBox(
+                      width: 10,
+                    ),
+                itemCount: list.length),
+          ),
         ),
       ]),
     );
   }
 
   Widget _buildRecevedText(Message message) {
-    return Row(
-      children: [
-        Text(message.lastTime),
-        Container(
-          decoration: BoxDecoration(
-              color: kPrimary,
-              borderRadius: BorderRadius.only(
-                  topRight: Radius.circular(15),
-                  topLeft: Radius.circular(15),
-                  bottomLeft: Radius.circular(15))),
-          child: ConstrainedBox(
-            constraints: BoxConstraints(maxWidth: 180),
-            child: Text(message.lastMessage),
-          ),
-        )
-      ],
+    return Padding(
+      padding: const EdgeInsets.all(10.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(message.lastTime),
+          Container(
+            decoration: BoxDecoration(
+                color: Color.fromARGB(255, 197, 192, 176),
+                borderRadius: BorderRadius.only(
+                    topRight: Radius.circular(15),
+                    topLeft: Radius.circular(15),
+                    bottomLeft: Radius.circular(15))),
+            child: ConstrainedBox(
+              constraints: BoxConstraints(maxWidth: 180),
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  message.lastMessage,
+                  style: TextStyle(fontSize: 20),
+                ),
+              ),
+            ),
+          )
+        ],
+      ),
     );
   }
 
   Widget _buildSenderText(Message message) {
     return Row(
+      //mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Container(
           padding: EdgeInsets.all(10),
@@ -59,7 +77,7 @@ class DetailsMessage extends StatelessWidget {
               color: message.user.bgColor, shape: BoxShape.circle),
           child: Image.asset(
             message.user.iconUrl,
-            width: 60,
+            width: 30,
           ),
         ),
         SizedBox(
@@ -75,10 +93,16 @@ class DetailsMessage extends StatelessWidget {
                   bottomLeft: Radius.circular(15))),
           child: ConstrainedBox(
             constraints: BoxConstraints(maxWidth: 180),
-            child: Text(message.lastMessage),
+            child: Text(
+              message.lastMessage,
+              style: TextStyle(fontSize: 20),
+            ),
           ),
         ),
-        Text(message.lastTime),
+        Padding(
+          padding: const EdgeInsets.only(left: 70),
+          child: Text(message.lastTime),
+        ),
       ],
     );
   }

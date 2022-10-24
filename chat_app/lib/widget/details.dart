@@ -5,6 +5,7 @@ import 'package:chat_app/my_color/color.dart';
 import 'package:chat_app/widget/contact_info.dart';
 import 'package:chat_app/widget/details_appbar.dart';
 import 'package:chat_app/widget/details_message.dart';
+import 'package:chat_app/widget/sendText.dart';
 import 'package:flutter/material.dart';
 
 class DetailsPage extends StatelessWidget {
@@ -19,7 +20,8 @@ class DetailsPage extends StatelessWidget {
         children: [
           DetailsAppBar(),
           ContactInfo(message),
-          Expanded(child: DetailsMessage())
+          Expanded(child: DetailsMessage()),
+          SendText()
         ],
       ),
     );

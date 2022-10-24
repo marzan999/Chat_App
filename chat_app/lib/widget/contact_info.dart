@@ -16,8 +16,8 @@ class ContactInfo extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              '${message.user.firstName}\n${message.user.lastName}',
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              '${message.user.firstName} ${message.user.lastName}',
+              style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
             ),
             Row(
               children: [
