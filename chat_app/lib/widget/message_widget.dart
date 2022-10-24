@@ -3,6 +3,7 @@
 import 'package:chat_app/model/message.dart';
 
 import 'package:chat_app/my_color/color.dart';
+import 'package:chat_app/widget/details.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -17,7 +18,10 @@ class MessaheWidget extends StatelessWidget {
         padding: EdgeInsets.symmetric(horizontal: 25, vertical: 30),
         decoration: BoxDecoration(
             borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(0), topRight: Radius.circular(95)),
+              topLeft: Radius.circular(0),
+              topRight: Radius.circular(95),
+              // bottomLeft: Radius.circular(95)
+            ),
             color: Color.fromARGB(255, 162, 177, 180)),
         child: _buildMessages(),
       ),
@@ -33,40 +37,47 @@ class MessaheWidget extends StatelessWidget {
         itemCount: messageList.length);
   }
 
-  Widget _buildMessage(BuildContext, int index) {
-    return Row(
-      children: [
-        Container(
-          decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            color: messageList[index].user.bgColor,
+  Widget _buildMessage(BuildContext context, int index) {
+    return GestureDetector(
+      onTap: (() {
+        Navigator.of(context).push(MaterialPageRoute(
+            builder: (context) => DetailsPage(messageList[index])));
+      }),
+      child: Row(
+        children: [
+          Container(
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              color: messageList[index].user.bgColor,
+            ),
+            child: Image.asset(
+              messageList[index].user.iconUrl,
+              width: 60,
+            ),
           ),
-          child: Image.asset(
-            messageList[index].user.iconUrl,
-            width: 60,
+          SizedBox(
+            width: 10,
           ),
-        ),
-        SizedBox(
-          width: 10,
-        ),
-        Flexible(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
-                children: [
-                  Text(
-                    '${messageList[index].user.firstName} ${messageList[index].user.lastName}',
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                  )
-                ],
-              ),
-              Text(messageList[index].lastMessage)
-            ],
+          Flexible(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  children: [
+                    Text(
+                      '${messageList[index].user.firstName} ${messageList[index].user.lastName}',
+                      style:
+                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                    )
+                  ],
+                ),
+                Text(messageList[index].lastMessage)
+              ],
+            ),
           ),
-        ),
-        Text(messageList[index].lastTime)
-      ],
+          Text(messageList[index].lastTime)
+        ],
+      ),
     );
   }
 }

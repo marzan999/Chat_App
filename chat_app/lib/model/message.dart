@@ -1,4 +1,5 @@
 import 'package:chat_app/model/user.dart';
+import 'package:flutter/animation.dart';
 
 class Message {
   User user;
@@ -19,6 +20,18 @@ class Message {
       Message(users[5], 'O vai, maro mujhe maro', '11:20 p.m.'),
     ];
   }
+
+  static List<Message> generatedMessageFromUser() {
+    return [
+      Message(users[0], 'I hate programming', '10:15 a.m.'),
+      Message(me, 'Okay, no problem', '1:10 p.m.'),
+      Message(users[2], 'Aj amar mon valo nei', '12:45 a.m.'),
+      Message(users[3], 'I need break', '10:05 a.m.'),
+      Message(me, 'Khatam, ta ta, bye bye', '9:36 p.m.'),
+      Message(users[5], 'O vai, maro mujhe maro', '11:20 p.m.'),
+    ];
+  }
 }
 
 var users = User.generatedUser();
+var me = User(0, 'John', 'Dev', 'images/33.png', Color(0xFFFDEBC8));
